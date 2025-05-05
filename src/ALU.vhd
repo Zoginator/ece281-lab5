@@ -89,10 +89,10 @@ begin
     q_result <= resultOUT;
  
     -- overflow flag
-    o_flags(0) <= not (i_A(7) xor i_B(7)) and (i_A(7) xor x_sum(7));
+    o_flags(0) <= not (i_A(7) xor i_B(7)) and (i_A(7) xor x_sum(7)) and (not i_op(1));
  
     -- carry
-    o_flags(1) <= x_upper_carry and (not i_op(0));
+    o_flags(1) <= x_upper_carry and (not i_op(1));
  
     -- negative
     o_flags(3) <= resultOUT(7);
