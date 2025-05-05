@@ -86,10 +86,10 @@ begin
     o_flags(1) <= x_upper_carry and (not i_op(0));
  
     -- negative
-    o_flags(2) <= resultOUT(7);
+    o_flags(3) <= resultOUT(7);
  
     -- zero
-    o_flags(3) <= '1' when (resultOUT = "00000000") else '0';
+    o_flags(2) <= '1' when (resultOUT = "00000000") else '0';
  
     o_result <= q_result;
 end behavioral;
