@@ -45,11 +45,11 @@ signal f_Q_next : STD_LOGIC_VECTOR (1 downto 0);
 begin
 
 	-- Next state logic
-	f_Q_next(0) <= ((not f_Q(1)) and (not f_Q(0))) or
-	               ((f_Q(1)) and (not f_Q(0)));
-	                 
-	f_Q_next(1) <= ((not f_Q(1)) and (f_Q(0))) or
-	               ((f_Q(1)) and (not f_Q(0)));
+	f_Q_next <= "00" when f_Q = "11" else
+	            "01" when f_Q = "00" else
+	            "10" when f_Q = "01" else
+	            "11" when f_Q = "10" else
+	            "00";
 	
 	
 	-- Output logic

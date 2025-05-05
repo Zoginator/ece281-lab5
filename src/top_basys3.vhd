@@ -182,9 +182,9 @@ begin
 	  --                "1111111";
 	                   
 	  -- anodes, display, and leds
-	  an(3 downto 0) <= "1111" when w_fsm = "0001" else
+	  an(3 downto 0) <= --"1111" when w_fsm = "0001" else
 	                    w_TDMsel;
-	  seg(6 downto 0) <= w_sevseg_out;
+	  seg(6 downto 0) <= w_decoder; --w_sevseg_out;
 	  led(3 downto 0) <= w_fsm;
 	  led(15 downto 12) <= w_flgs;
 	  led(11 downto 4) <= (others => '0'); --grounded leds
