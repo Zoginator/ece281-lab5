@@ -57,12 +57,14 @@ architecture behavioral of ALU is
     signal x_lower_carry, x_upper_carry : STD_LOGIC;
     signal q_result : STD_LOGIC_VECTOR(7 downto 0);
     signal B_mux : STD_LOGIC_VECTOR(7 downto 0);
+    signal Cin_mux : STD_LOGIC;
+    
     
 begin
     u0_ALU : ripple_adder
         port map ( A    => i_A(3 downto 0),
                    B    => B_mux(3 downto 0),
-                   Cin  => '0',
+                   Cin  => Cin_mux,
                    S    => x_sum(3 downto 0),
                    Cout => x_lower_carry );
  
@@ -75,7 +77,7 @@ begin
  
     -- MUX
     B_mux   <= not i_B when i_op = "001" else i_B;
-    
+    Cin_mux <= '1' when i_op = "001" else '0';
     
     resultOUT <= x_sum when i_op = "000" else
                  x_sum when i_op = "001" else
