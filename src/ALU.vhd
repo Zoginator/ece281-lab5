@@ -81,7 +81,8 @@ begin
     
     resultOUT <= x_sum when i_op = "000" else
                  x_sum when i_op = "001" else
-                 (others => '0') when i_op = "010" else
+                 (i_A and i_B) when i_op = "010" else
+                 (i_A or i_B) when i_op = "011" else
                  (others => '0');
                  
        
