@@ -178,13 +178,14 @@ begin
 	          w_ff2 when "0100",
 	          w_result when others;    
 	--mux2
-	  --w_sevseg_out <= "0111111" when w_TDMsel = "0111" and w_flgs(3) = '1' else
-	  --                "1111111";
+	  w_sevseg_out <= "0111111" when w_TDMsel = "0111" and w_flgs(3) = '1' and w_fsm = "1000" else
+	                  "1111111" when w_TDMsel = "0111" else 
+	                  w_decoder;
 	                   
 	  -- anodes, display, and leds
-	  an(3 downto 0) <= --"1111" when w_fsm = "0001" else
+	  an(3 downto 0) <= "1111" when w_fsm = "0001" else
 	                    w_TDMsel;
-	  seg(6 downto 0) <= w_decoder; --w_sevseg_out;
+	  seg(6 downto 0) <= w_sevseg_out;
 	  led(3 downto 0) <= w_fsm;
 	  led(15 downto 12) <= w_flgs;
 	  led(11 downto 4) <= (others => '0'); --grounded leds
